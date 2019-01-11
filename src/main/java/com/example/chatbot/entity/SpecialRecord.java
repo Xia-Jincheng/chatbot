@@ -1,9 +1,7 @@
 package com.example.chatbot.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class SpecialRecord {
@@ -19,6 +17,10 @@ public class SpecialRecord {
 
     private String isUse;
     /*如果为true则使用，如果为false则不使用*/
+
+    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)
+    @JoinColumn(name="product_id")
+    private Product product;
 
     public Integer getId() {
         return id;
