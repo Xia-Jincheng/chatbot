@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUser(){
-        return userRepository.findAll();
+        return userRepository.getAllUser();
     }
 
     @Override
@@ -37,7 +37,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Modifying
-    public void modifyUser(User user){
+    public void save(User user){
         userRepository.save(user);
     }
+
+    @Override
+    public User findUserByName(String name) {
+        return userRepository.findUserByName(name);
+    }
+
+    @Override
+    public List<User> getAllAdmin() {
+        return userRepository.getAllAdmin();
+    }
+
+    @Override
+    public List<User> getAllCustom() {
+        return userRepository.getAllCustom();
+    }
+
 }
