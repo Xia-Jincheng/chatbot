@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ChatRecordRepository extends JpaRepository<ChatRecord,Integer> {
 
-    @Query(value = "select * from ChatRecord as record where record.isreply=false", nativeQuery = true)
+    @Query(value = "select * from chat_record as record where record.is_reply=false", nativeQuery = true)
     List<ChatRecord> getUnhandle();
 }
