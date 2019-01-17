@@ -42,4 +42,9 @@ public class AdminController {
     public String showTrafic(){
         return "manage/traffic";
     }
+
+    @GetMapping("/products")
+    public String toProduct(){
+        return "manage/products";
+    }
 }

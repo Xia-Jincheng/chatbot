@@ -43,7 +43,6 @@
 </head>
 
 <body>
-<!--Top bar-->
 <div th:replace="commons/bar::topbar"></div>
 
 <div class="container-fluid">
@@ -64,7 +63,7 @@
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <main role="main" class="col-md-6 offset-2 col-lg-7 pt-3 px-4">
             <p style="color: red;" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
             <form th:action="@{/admin/user_add}" method="post">
                 <!--<input type="hidden" name="_method" value="put" th:if="${user==null}"/>-->
@@ -114,7 +113,6 @@
 <script>
     feather.replace()
 </script>
-
 </body>
 
 </html>
