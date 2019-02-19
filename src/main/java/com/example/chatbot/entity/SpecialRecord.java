@@ -19,7 +19,7 @@ public class SpecialRecord {
     /*如果为true则使用，如果为false则不使用*/
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)
-    @JoinColumn(name="product_id")
+    @JoinColumn(name="product")
     private Product product;
 
     public Integer getId() {
@@ -60,5 +60,13 @@ public class SpecialRecord {
 
     public void setIsUse(String isUse) {
         this.isUse = isUse;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

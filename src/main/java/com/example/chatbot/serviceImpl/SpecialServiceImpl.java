@@ -4,6 +4,7 @@ import com.example.chatbot.entity.SpecialRecord;
 import com.example.chatbot.repository.SpecialRecordRepository;
 import com.example.chatbot.service.SpecialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,12 @@ public class SpecialServiceImpl implements SpecialService {
 
     @Override
     public void add(SpecialRecord specialRecord) {
+        specialRepository.save(specialRecord);
+    }
+
+    @Override
+    @Modifying
+    public void modify(SpecialRecord specialRecord){
         specialRepository.save(specialRecord);
     }
 }

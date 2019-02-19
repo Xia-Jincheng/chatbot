@@ -47,6 +47,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findUsersByInput(String input){
+        return userRepository.findUsersByInput(input);
+    }
+
+    @Override
     public List<User> getAllAdmin() {
         return userRepository.getAllAdmin();
     }
@@ -56,4 +61,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.getAllCustom();
     }
 
+    @Override
+    public List<User> getAPage(Integer page_num){
+        return userRepository.getAPage((page_num - 1) * 18);
+    }
 }

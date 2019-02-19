@@ -1,10 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>alterspecial</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title th:text="${special!=null}?'AlterSpecial':'AddSpecial'"></title>
+    <!-- Bootstrap core CSS -->
+    <link href="classpath:/asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="classpath:/asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
 </head>
+
 <body>
+<!--Top bar-->
+<div th:replace="commons/bar::topbar"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--side bar-->
+        <div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <!--需要区分是用户修改还是添加；-->
+            <form id="form1" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${special!=null}"/>
+                <input type="hidden" name="id" th:if="${special!=null}" th:value="${special.id}">
+                <div class="form-group">
+                    <label style="font: 17px bold;">ID</label>
+                    <input type="text" class="form-control" placeholder="1" th:value="${special!=null}?${special.id}">
+                </div>
+                <div class="form-group">
+                    <label style="font: 17px bold;">Question</label>
+                    <input name="question" type="text" class="form-control" placeholder="" th:value="${special!=null}?${special.question}">
+                </div>
+                <div class="form-group">
+                    <label style="font: 17px bold;">Answer</label>
+                    <input name="answer" type="text" class="form-control" placeholder="" th:value="${special!=null}?${special.answer}">
+                </div>
+                <div class="form-group">
+                    <label style="font: 17px bold;">添加时间</label>
+                    <input name="addTime" type="text" id="addtime" class="form-control" th:value="${special!=null}?${special.addTime}">
+                </div>
+                <div class="form-group">
+                    <label style="font: 17px bold;">相关产品</label><br/>
+                    <div class="row">
+                        <pre>  </pre>
+                        <select id="select" class="col-md-3">
+                            <option value="1">失业保险</option>
+                            <option value="2">工商保险</option>
+                            <option value="3">养老保险</option>
+                            <option value="4">医疗保险</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${special!=null}?'修改':'添加'">添加</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.3.1-1/jquery.js}"></script>
+<script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{/webjars/popper.js/1.11.1/dist/popper.js}"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/static/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+
+<script>
+    function mytime(){
+        var a = new Date();
+        var b = a.toLocaleTimeString();
+        var c = a.toLocaleDateString();
+        $("#addtime").val(c + " " + b);
+        // document.getElementById("addtime").innerHTML = c+"&nbsp"+b;
+    }
+    setInterval(mytime, 1000);
+
+    $("#form1").attr("action", '/special/' + $("#select").val());
+</script>
 
 </body>
 </html>

@@ -71,15 +71,15 @@
 						<div class="form-group">
 							<label style="font: 17px bold;">角色</label><br/>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==0}">
+								<input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==0}">
 								<label class="form-check-label">管理员</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==1}">
+								<input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==1}">
 								<label class="form-check-label">用户</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==2}">
+								<input class="form-check-input" type="radio" name="status" value="2" th:checked="${user!=null}?${user.status==2}">
 								<label class="form-check-label">客服</label>
 							</div>
 						</div>

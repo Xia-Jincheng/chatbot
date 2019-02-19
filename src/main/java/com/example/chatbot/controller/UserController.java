@@ -5,10 +5,7 @@ import com.example.chatbot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +18,14 @@ public class UserController {
     public String toListUsers(Model model){
         List<User> users = userService.getAllUser();
         model.addAttribute("users", users);
+        model.addAttribute("page", 1);
         return "manage/users";
+    }
+
+    @GetMapping("/users")
+    public String getAPage(@RequestParam Integer page_num){
+        List<User> users = userService.getAPage(page_num);
+        return "redirect:manage/users";
     }
 
     @GetMapping("/user_alter/{id}")
@@ -34,7 +38,13 @@ public class UserController {
     @PutMapping("/user")
     public String userAlter(User user){
         userService.save(user);
-        return "redirect:/users";
+        System.out.println(user.getName());
+        System.out.println(user.getStatus());
+        if(user.getStatus() == 0)
+            return "redirect:/admins";
+        if(user.getStatus() == 1)
+            return "redirect:/users";
+        return "redirect:/customs";
     }
 
     @DeleteMapping("/user_delete/{id}")

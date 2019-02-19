@@ -28,7 +28,11 @@ public class AdminController {
             return "signup";
         }
         userService.addUser(user);
-        return "redirect:/users";
+        if(user.getStatus() == 0)
+            return "redirect:/admins";
+        if(user.getStatus() == 1)
+            return "redirect:/users";
+        return "redirect:/customs";
     }
 
     @GetMapping("/admins")

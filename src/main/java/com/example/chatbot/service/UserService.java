@@ -12,7 +12,12 @@ public interface UserService {
     Optional<User> getUser(Integer id);
     void save(User user);
     User findUserByName(String name);
+
+    List<User> findUsersByInput(String input);
+
     List<User> getAllAdmin();
 
     List<User> getAllCustom();
+
+    List<User> getAPage(Integer page_num);
 }
