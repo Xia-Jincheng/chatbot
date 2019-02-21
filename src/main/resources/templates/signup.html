@@ -4,13 +4,14 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>SignUp</title>
     <!-- Bootstrap core CSS -->
     <link href="classpath:/asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <!-- CSS Files -->
+    <link href="/static/css/material-dashboard.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="classpath:/asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
@@ -34,10 +35,8 @@
                 opacity: 1
             }
         }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        label{
+            color: black;
         }
     </style>
 </head>
@@ -51,7 +50,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active">
+                        <a style="font-weight: bolder" class="nav-link active">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>

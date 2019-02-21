@@ -11,4 +11,8 @@ public interface RecordService {
     void deleteRecord(Integer id);
     void updateRecord(ChatRecord chatRecord);
     List<ChatRecord> getUnhandle();
+
+    List<ChatRecord> getAPageRecord(Integer page_num);
+
+    Integer getRecordNum();
 }

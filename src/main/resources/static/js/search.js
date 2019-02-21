@@ -17,7 +17,7 @@ function search() {
             for (var i = 0; i < users.length; i++) {
                 var item = document.createElement("a");
                 item.className = "list-group-item";
-                $(item).css({"font-size": "18px", "color": "black"});
+                $(item).css({"font-size": "18px", "color": "black","font-weight": "normal", "background-color": "white", "opacity": 0.93});
                 $(item).hover(function () {
                     $(this).css({"background-color": "gray"});
                 }, function () {
@@ -36,7 +36,8 @@ function search() {
                 list_group.appendChild(item);
             }
 
-            $(list_group).css({"width": "800px", "margin-left": "285px", "z-index": "100", "position": "absolute", "top": "50px", "opacity": 0.9});
+            $(list_group).css({"width": "600px", "z-index": "100", "position": "absolute", "right": "70px", "top": "54px"});
+            console.log("halo");
             var body1 = document.getElementsByTagName("body");
             body1[0].appendChild(list_group);
         }

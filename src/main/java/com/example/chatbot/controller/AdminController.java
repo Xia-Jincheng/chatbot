@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -36,9 +37,16 @@ public class AdminController {
     }
 
     @GetMapping("/admins")
-    public String toListAdmins(Model model){
-        List<User> users = userService.getAllAdmin();
+    public String toListAdmins(){
+        return "forward:/admins_page/1";
+    }
+
+    @GetMapping("/admins_page/{page_num}")
+    public String getAPage(@PathVariable("page_num")Integer page_num, Model model){
+        List<User> users = userService.getAPageAdmin(page_num);
         model.addAttribute("users", users);
+        model.addAttribute("page_num", page_num);
+        model.addAttribute("max_page_num", userService.getAdminNum());
         return "manage/admins";
     }
 

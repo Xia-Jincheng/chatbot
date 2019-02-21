@@ -13,4 +13,8 @@ public interface SpecialService {
 
     @Modifying
     void modify(SpecialRecord specialRecord);
+
+    List<SpecialRecord> getAPageSpecial(Integer page_num);
+
+    Integer getSpecialNum();
 }

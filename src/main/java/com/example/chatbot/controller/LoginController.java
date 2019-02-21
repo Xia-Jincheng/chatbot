@@ -43,4 +43,10 @@ public class LoginController {
         session.setAttribute("loginUser", username);
         return "redirect:/main";
     }
+
+    @GetMapping("/signout")
+    public String signOut(HttpSession session){
+        session.removeAttribute("loginUser");
+        return "/login";
+    }
 }

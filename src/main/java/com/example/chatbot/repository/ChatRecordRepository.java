@@ -9,4 +9,11 @@ import java.util.List;
 public interface ChatRecordRepository extends JpaRepository<ChatRecord,Integer> {
     @Query(value = "select * from chat_record as record where record.is_reply=false", nativeQuery = true)
     List<ChatRecord> getUnhandle();
+
+
+    @Query(value = "select * from chat_record limit ?1,11", nativeQuery = true)
+    List<ChatRecord> getAPageRecord(Integer start);
+
+    @Query(value = "select count(*) from chat_record", nativeQuery = true)
+    Integer getRecordNum();
 }

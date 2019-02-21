@@ -42,4 +42,14 @@ public class RecordServiceImpl implements RecordService {
     public List<ChatRecord> getUnhandle() {
         return recordRepository.getUnhandle();
     }
+
+    @Override
+    public List<ChatRecord> getAPageRecord(Integer page_num) {
+        return recordRepository.getAPageRecord((page_num-1) * 11);
+    }
+
+    @Override
+    public Integer getRecordNum() {
+        return (int)Math.ceil(recordRepository.getRecordNum() / 11.0);
+    }
 }

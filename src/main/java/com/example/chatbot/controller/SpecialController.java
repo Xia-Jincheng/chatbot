@@ -22,8 +22,16 @@ public class SpecialController {
 
     @GetMapping("/special")
     public String toSpecial(Model model){
-        List<SpecialRecord> specials = specialService.getAll();
+        return "forward:/special_page/1";
+    }
+
+    @GetMapping("/special_page/{page_num}")
+    public String getAPage(@PathVariable("page_num") Integer page_num, Model model){
+        List<SpecialRecord> specials = specialService.getAPageSpecial(page_num);
         model.addAttribute("specials", specials);
+        model.addAttribute("page_num", page_num);
+        Integer max = specialService.getSpecialNum();
+        model.addAttribute("max_page_num", max);
         return "manage/special";
     }
 

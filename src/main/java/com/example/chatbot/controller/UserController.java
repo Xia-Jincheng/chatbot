@@ -15,17 +15,18 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/users")
-    public String toListUsers(Model model){
-        List<User> users = userService.getAllUser();
-        model.addAttribute("users", users);
-        model.addAttribute("page", 1);
-        return "manage/users";
+    public String toListUsers(){
+        return "forward:/users_page/1";
     }
 
-    @GetMapping("/users")
-    public String getAPage(@RequestParam Integer page_num){
-        List<User> users = userService.getAPage(page_num);
-        return "redirect:manage/users";
+    @GetMapping("/users_page/{page_num}")
+    public String getAPage(@PathVariable("page_num") Integer page_num, Model model){
+        List<User> users = userService.getAPageUser(page_num);
+        model.addAttribute("users", users);
+        model.addAttribute("page_num", page_num);
+        Integer max = userService.getUserNum();
+        model.addAttribute("max_page_num", max);
+        return "manage/users";
     }
 
     @GetMapping("/user_alter/{id}")

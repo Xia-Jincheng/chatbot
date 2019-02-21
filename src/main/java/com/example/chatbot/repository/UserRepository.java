@@ -24,6 +24,21 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query(value = "select * from user where user.status=2", nativeQuery = true)
     List<User> getAllCustom();
 
-    @Query(value = "select * from user limit ?1,18", nativeQuery = true)
-    List<User> getAPage(Integer start);
+    @Query(value = "select * from user where user.status=1 limit ?1,11", nativeQuery = true)
+    List<User> getAPageUser(Integer start);
+
+    @Query(value = "select count(*) from user where user.status=1", nativeQuery = true)
+    Integer getUserNum();
+
+    @Query(value = "select * from user where user.status=2 limit ?1,11", nativeQuery = true)
+    List<User> getAPageCustom(Integer start);
+
+    @Query(value = "select count(*) from user where user.status=2", nativeQuery = true)
+    Integer getCustomNum();
+
+    @Query(value = "select * from user where user.status=0 limit ?1,11", nativeQuery = true)
+    List<User> getAPageAdmin(Integer start);
+
+    @Query(value = "select count(*) from user where user.status=0", nativeQuery = true)
+    Integer getAdminNum();
 }

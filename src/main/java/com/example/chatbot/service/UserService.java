@@ -19,5 +19,15 @@ public interface UserService {
 
     List<User> getAllCustom();
 
-    List<User> getAPage(Integer page_num);
+    List<User> getAPageUser(Integer page_num);
+
+    Integer getUserNum();
+
+    List<User> getAPageCustom(Integer page_num);
+
+    Integer getCustomNum();
+
+    List<User> getAPageAdmin(Integer page_num);
+
+    Integer getAdminNum();
 }

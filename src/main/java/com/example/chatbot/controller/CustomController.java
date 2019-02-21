@@ -17,8 +17,15 @@ public class CustomController {
 
     @GetMapping("/customs")
     public String toListCustoms(Model model){
-        List<User> users = userService.getAllCustom();
+        return "forward:/customs_page/1";
+    }
+
+    @GetMapping("/customs_page/{page_num}")
+    public String getAPage(@PathVariable("page_num")Integer page_num, Model model){
+        List<User> users = userService.getAPageCustom(page_num);
         model.addAttribute("users", users);
+        model.addAttribute("page_num", page_num);
+        model.addAttribute("max_page_num", userService.getCustomNum());
         return "manage/customs";
     }
 

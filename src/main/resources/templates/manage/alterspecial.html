@@ -4,13 +4,14 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title th:text="${special!=null}?'AlterSpecial':'AddSpecial'"></title>
     <!-- Bootstrap core CSS -->
     <link href="classpath:/asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <!-- CSS Files -->
+    <link href="/static/css/material-dashboard.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="classpath:/asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
@@ -35,9 +36,8 @@
             }
         }
 
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        label{
+            color: black;
         }
     </style>
 </head>

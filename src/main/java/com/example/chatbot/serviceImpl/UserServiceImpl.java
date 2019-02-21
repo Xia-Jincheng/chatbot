@@ -62,7 +62,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAPage(Integer page_num){
-        return userRepository.getAPage((page_num - 1) * 18);
+    public List<User> getAPageUser(Integer page_num){
+        return userRepository.getAPageUser((page_num - 1) * 11);
+    }
+
+    @Override
+    public Integer getUserNum(){
+        return (int)Math.ceil(userRepository.getUserNum() / 11.0);
+    }
+
+    @Override
+    public List<User> getAPageCustom(Integer page_num){
+        return userRepository.getAPageCustom((page_num - 1) * 11);
+    }
+
+    @Override
+    public Integer getCustomNum(){
+        return (int)Math.ceil(userRepository.getCustomNum() / 11.0);
+    }
+
+    @Override
+    public List<User> getAPageAdmin(Integer page_num) {
+        return userRepository.getAPageAdmin((page_num-1) * 11);
+    }
+
+    @Override
+    public Integer getAdminNum() {
+        return (int)Math.ceil(userRepository.getAdminNum() / 11.0);
     }
 }

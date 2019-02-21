@@ -17,8 +17,17 @@ public class ChatRecordController {
 
     @GetMapping("/chatrecords")
     public String toListRecods(Model model){
-        List<ChatRecord> records = recordService.getAllRecords();
+        return "forward:records_page/1";
+    }
+
+
+    @GetMapping("/records_page/{page_num}")
+    public String getAPage(@PathVariable("page_num") Integer page_num, Model model){
+        List<ChatRecord> records = recordService.getAPageRecord(page_num);
         model.addAttribute("records", records);
+        model.addAttribute("page_num", page_num);
+        Integer max = recordService.getRecordNum();
+        model.addAttribute("max_page_num", max);
         return "manage/chatrecords";
     }
 

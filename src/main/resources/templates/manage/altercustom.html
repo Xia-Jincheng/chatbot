@@ -4,13 +4,14 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="">
-		<meta name="author" content="">
 
 		<title>Add</title>
 		<!-- Bootstrap core CSS -->
 		<link href="classpath:/asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+		<!-- CSS Files -->
+		<link href="/static/css/material-dashboard.css" rel="stylesheet" />
 
 		<!-- Custom styles for this template -->
 		<link href="classpath:/asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
@@ -35,10 +36,9 @@
 				}
 			}
 			
-			.chartjs-render-monitor {
-				-webkit-animation: chartjs-render-animation 0.001s;
-				animation: chartjs-render-animation 0.001s;
-			}
+			label{
+                color: black;
+            }
 		</style>
 	</head>
 
@@ -69,34 +69,78 @@
 							<input name="email" type="email" class="form-control" placeholder="zhangsan@gmail.com" th:value="${user!=null}?${user.email}">
 						</div>
 						<div class="form-group">
-							<label style="font: 17px bold;">角色</label><br/>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==0}">
-								<label class="form-check-label">管理员</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==1}">
-								<label class="form-check-label">用户</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="status" value="2" th:checked="${user!=null}?${user.status==2}">
-								<label class="form-check-label">客服</label>
-							</div>
+							<!--<label style="font: 17px bold;">角色</label><br/>-->
+							<!--<div class="form-check form-check-inline">-->
+								<!--<input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==0}">-->
+								<!--<label class="form-check-label">管理员</label>-->
+							<!--</div>-->
+							<!--<div class="form-check form-check-inline">-->
+								<!--<input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==1}">-->
+								<!--<label class="form-check-label">用户</label>-->
+							<!--</div>-->
+							<!--<div class="form-check form-check-inline">-->
+								<!--<input class="form-check-input" type="radio" name="status" value="2" th:checked="${user!=null}?${user.status==2}">-->
+								<!--<label class="form-check-label">客服</label>-->
+							<!--</div>-->
+                            <div style="margin-top: 4px" class="form-check">
+                                <label style="font: 17px bold;">角色</label><br/>
+                                &nbsp;
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==0}"/>
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                    管理员&nbsp;&nbsp;
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==1}">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                    用户&nbsp;&nbsp;
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="status" value="2" th:checked="${user!=null}?${user.status==2}">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                    客服
+                                </label>
+                            </div>
+
 						</div>
 						<div class="form-group">
 							<label style="font: 17px bold;">电话</label>
 							<input name="phone" type="number" class="form-control" placeholder="16666666666" th:value="${user!=null}?${user.phone}">
 						</div>
 						<div class="form-group">
-							<label style="font: 17px bold;">当前状态</label><br/>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="present" value="1" th:checked="${user!=null}?${user.present==0}">
-								<label class="form-check-label">在任</label>
-							</div>
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="present" value="0" th:checked="${user!=null}?${user.present==1}">
-								<label class="form-check-label">已离职</label>
-							</div>
+							<!--<label style="font: 17px bold;">当前状态</label><br/>-->
+							<!--<div class="form-check form-check-inline">-->
+								<!--<input class="form-check-input" type="radio" name="present" value="1" th:checked="${user!=null}?${user.present==0}">-->
+								<!--<label class="form-check-label">在任</label>-->
+							<!--</div>-->
+							<!--<div class="form-check form-check-inline">-->
+								<!--<input class="form-check-input" type="radio" name="present" value="0" th:checked="${user!=null}?${user.present==1}">-->
+								<!--<label class="form-check-label">已离职</label>-->
+							<!--</div>-->
+                            <div style="margin-top: 4px" class="form-check">
+                                <label style="font: 17px bold;">角色</label><br/>
+                                &nbsp;
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="present" value="0" th:checked="${user!=null}?${user.present==0}"/>
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                    在任&nbsp;&nbsp;
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="present" value="1" th:checked="${user!=null}?${user.present==1}">
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                    已离职
+                                </label>
+                            </div>
 						</div>
 						<button type="submit" class="btn btn-primary" th:text="${user!=null}?'修改':'添加'">添加</button>
 					</form>

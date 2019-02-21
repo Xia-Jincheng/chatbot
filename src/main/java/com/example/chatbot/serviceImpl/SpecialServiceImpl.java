@@ -39,4 +39,14 @@ public class SpecialServiceImpl implements SpecialService {
     public void modify(SpecialRecord specialRecord){
         specialRepository.save(specialRecord);
     }
+
+    @Override
+    public List<SpecialRecord> getAPageSpecial(Integer page_num) {
+        return specialRepository.getAPageSpecial((page_num-1) * 11);
+    }
+
+    @Override
+    public Integer getSpecialNum() {
+        return (int)Math.ceil(specialRepository.getSpecialNum() / 11.0);
+    }
 }
