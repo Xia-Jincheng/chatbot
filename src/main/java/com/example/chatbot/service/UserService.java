@@ -8,6 +8,9 @@ import java.util.Optional;
 public interface UserService {
     void addUser(User user);
     List<User> getAllUser();
+
+    Integer getCount();
+
     void deleteUser(Integer id);
     Optional<User> getUser(Integer id);
     void save(User user);
@@ -30,4 +33,10 @@ public interface UserService {
     List<User> getAPageAdmin(Integer page_num);
 
     Integer getAdminNum();
+
+    Integer getUserCount();
+
+    Integer getAdminCount();
+
+    Integer getCustomCount();
 }

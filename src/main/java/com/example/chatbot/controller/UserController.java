@@ -1,6 +1,8 @@
 package com.example.chatbot.controller;
 
+import com.example.chatbot.entity.ChatRecord;
 import com.example.chatbot.entity.User;
+import com.example.chatbot.service.RecordService;
 import com.example.chatbot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    RecordService recordService;
 
     @GetMapping("/users")
     public String toListUsers(){
@@ -27,6 +32,14 @@ public class UserController {
         Integer max = userService.getUserNum();
         model.addAttribute("max_page_num", max);
         return "manage/users";
+    }
+
+    @GetMapping("/user_records/{id}")
+    public String getUserRecords(@PathVariable("id") Integer user_id, Model model){
+        List<ChatRecord> user_records = recordService.getUserRecords(user_id);
+        model.addAttribute("user_records", user_records);
+        model.addAttribute("user_name", userService.getUser(user_id).get().getName());
+        return "manage/userrecords";
     }
 
     @GetMapping("/user_alter/{id}")

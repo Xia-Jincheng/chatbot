@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Integer getCount(){
+        return (int)userRepository.count();
+    }
+
+    @Override
     public void deleteUser(Integer id){
         userRepository.deleteById(id);
     }
@@ -89,5 +94,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer getAdminNum() {
         return (int)Math.ceil(userRepository.getAdminNum() / 11.0);
+    }
+
+    @Override
+    public Integer getUserCount(){
+        return userRepository.getUserNum();
+    }
+
+    @Override
+    public Integer getAdminCount(){
+        return userRepository.getAdminNum();
+    }
+
+    @Override
+    public Integer getCustomCount(){
+        return userRepository.getCustomNum();
     }
 }

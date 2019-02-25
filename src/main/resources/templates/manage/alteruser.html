@@ -51,7 +51,11 @@
 				<!--side bar-->
 				<div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
 
-				<main role="main" class="col-md-6 offset-2 col-lg-7 pt-3 px-4">
+				<main role="main" class="col-md-7 offset-md-3 pt-3 px-4 card">
+                    <div class="card-header card-header-primary">
+                        <h4 style="font-weight: bolder" class="card-title">编辑用户</h4>
+                    </div>
+                    <br>
 					<!--需要区分是用户修改还是添加；-->
 					<form th:action="@{/user}" method="post">
 						<input type="hidden" name="_method" value="put" th:if="${user!=null}"/>
@@ -115,6 +119,7 @@
 						</div>
 						<button type="submit" class="btn btn-primary" th:text="${user!=null}?'修改':'添加'">添加</button>
 					</form>
+                    <br>
 				</main>
 			</div>
 		</div>

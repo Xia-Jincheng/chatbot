@@ -16,4 +16,7 @@ public interface ChatRecordRepository extends JpaRepository<ChatRecord,Integer> 
 
     @Query(value = "select count(*) from chat_record", nativeQuery = true)
     Integer getRecordNum();
+
+    @Query(value = "select * from chat_record where user_id=?1", nativeQuery = true)
+    List<ChatRecord> getUserRecords(Integer user_id);
 }

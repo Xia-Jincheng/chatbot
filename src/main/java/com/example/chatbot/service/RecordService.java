@@ -15,4 +15,6 @@ public interface RecordService {
     List<ChatRecord> getAPageRecord(Integer page_num);
 
     Integer getRecordNum();
+
+    List<ChatRecord> getUserRecords(Integer user_id);
 }

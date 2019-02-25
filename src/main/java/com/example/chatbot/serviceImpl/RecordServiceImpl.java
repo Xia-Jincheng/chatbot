@@ -52,4 +52,9 @@ public class RecordServiceImpl implements RecordService {
     public Integer getRecordNum() {
         return (int)Math.ceil(recordRepository.getRecordNum() / 11.0);
     }
+
+    @Override
+    public List<ChatRecord> getUserRecords(Integer user_id){
+        return recordRepository.getUserRecords(user_id);
+    }
 }

@@ -7,14 +7,14 @@
 
     <title>SignUp</title>
     <!-- Bootstrap core CSS -->
-    <link href="classpath:/asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <!-- CSS Files -->
     <link href="/static/css/material-dashboard.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="classpath:/asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
+    <link th:href="@{/static/css/dashboard.css}" rel="stylesheet">
     <style type="text/css">
         /* Chart.js */
 
@@ -50,7 +50,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a style="font-weight: bolder" class="nav-link active">
+                        <a style="font-size: 18px;font-weight: bolder" class="nav-link active">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -62,8 +62,12 @@
             </div>
         </nav>
 
-        <main role="main" class="col-md-6 offset-2 col-lg-7 pt-3 px-4">
-            <p style="color: red;" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        <main role="main" class="col-md-7 offset-md-3 pt-3 px-4 card">
+            <div class="card-header card-header-primary">
+                <h4 style="font-weight: bold" class="card-title">Edit</h4>
+            </div>
+            <br>
+            <p style="color: red;font-size:18px;font-weight: bold;" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
             <form th:action="@{/admin/user_add}" method="post">
                 <!--<input type="hidden" name="_method" value="put" th:if="${user==null}"/>-->
                 <div class="form-group">
@@ -75,19 +79,32 @@
                     <input name="email" type="email" class="form-control" placeholder="zhangsan@gmail.com" th:value="${user!=null}?${user.email}">
                 </div>
                 <div class="form-group">
-                    <label style="font: 17px bold;">身份</label><br/>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==0}">
-                        <label class="form-check-label">管理员</label>
+                    <div style="margin-top: 4px" class="form-check">
+                        <label style="font: 17px bold;">身份</label><br/>
+                        &nbsp;
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="status" value="0" th:checked="${user!=null}?${user.status==0}"/>
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                            管理员&nbsp;&nbsp;
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==1}">
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                            用户&nbsp;&nbsp;
+                        </label>
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="status" value="2" th:checked="${user!=null}?${user.status==2}">
+                            <span class="form-check-sign">
+                                <span class="check"></span>
+                            </span>
+                            客服
+                        </label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" value="1" th:checked="${user!=null}?${user.status==1}">
-                        <label class="form-check-label">用户</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" value="2" th:checked="${user!=null}?${user.status==2}">
-                        <label class="form-check-label">客服</label>
-                    </div>
+                    <br>
                     <div class="form-group">
                         <label style="font: 17px bold;">电话</label>
                         <input name="phone" type="number" class="form-control" placeholder="16666666666" th:value="${user!=null}?${user.phone}">
@@ -99,18 +116,48 @@
                 </div>
                 <div class="form-group">
                     <label style="font: 17px bold;">确认密码</label>
-                    <input type="password" class="form-control" th:value="${user!=null}?${user.password}">
+                    <input name="password1" type="password" class="form-control" th:value="${user!=null}?${user.password}">
                 </div>
                 <input type="hidden" name="present" th:value="true">
                 <button type="submit" class="btn btn-primary">提交</button>
             </form>
+            <br>
         </main>
     </div>
 </div>
 <!-- Icons -->
-<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/static/js/feather.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/feather.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.3.1-1/jquery.js}"></script>
+
 <script>
-    feather.replace()
+    $("input[name='name']").focusout(function(){
+        if($(this).val() == ''){
+            alert("用户名不能为空！");
+        }
+    });
+    $("input[name='email']").focusout(function(){
+        if($(this).val()==''){
+            alert("请输入邮箱！");
+        }
+    });
+    $("input[name='phone']").focusout(function(){
+        if($(this).val()==''){
+            alert("请输入电话！");
+        }
+    });
+    $("input[name='password']").focusout(function(){
+        if($(this).val()==''){
+            alert("请输入密码！");
+        }
+    });
+    $("input[name='password1']").focusout(function(){
+        if($(this).val()==''){
+            alert("请输入确认密码！");
+        }
+        if($(this).val() != $("input[name='password']").val())
+            alert("密码不一致，请重新输入！");
+    });
+
 </script>
 </body>
 

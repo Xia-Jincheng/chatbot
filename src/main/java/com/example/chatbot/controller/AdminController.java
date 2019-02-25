@@ -50,9 +50,12 @@ public class AdminController {
         return "manage/admins";
     }
 
-    @GetMapping("/traffic")
-    public String showTrafic(){
-        return "manage/traffic";
+    @GetMapping("/summary")
+    public String showSummary(Model model){
+        model.addAttribute("user_count", userService.getUserCount());
+        model.addAttribute("custom_count", userService.getCustomCount());
+        model.addAttribute("admin_count", userService.getAdminCount());
+        return "manage/summary";
     }
 
     @GetMapping("/products")

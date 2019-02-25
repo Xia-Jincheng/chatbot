@@ -17,7 +17,7 @@ function search() {
             for (var i = 0; i < users.length; i++) {
                 var item = document.createElement("a");
                 item.className = "list-group-item";
-                $(item).css({"font-size": "18px", "color": "black","font-weight": "normal", "background-color": "white", "opacity": 0.93});
+                $(item).css({"font-size": "18px", "color": "black","font-weight": "normal", "background-color": "white", "opacity": 0.9});
                 $(item).hover(function () {
                     $(this).css({"background-color": "gray"});
                 }, function () {
@@ -36,7 +36,7 @@ function search() {
                 list_group.appendChild(item);
             }
 
-            $(list_group).css({"width": "600px", "z-index": "100", "position": "absolute", "right": "70px", "top": "54px"});
+            $(list_group).css({"width": "500px", "z-index": "100", "position": "absolute", "right": "110px", "top": "55px"});
             console.log("halo");
             var body1 = document.getElementsByTagName("body");
             body1[0].appendChild(list_group);
@@ -72,4 +72,7 @@ $('html').click(function(event) {
     var evt = event.srcElement ? event.srcElement : event.target;
     if(evt.tagName == 'A' ) return; // 如果是元素本身，则返回
     $('#list_group').hide(); // 如不是则隐藏元素
+});
+$("#search-icon").click(function () {
+    $("#search").focus();
 });

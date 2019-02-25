@@ -74,7 +74,11 @@
 									<td style="font-weight: normal" th:text="${user.name}"></td>
 									<td style="font-weight: normal" th:text="${user.email}"></td>
 									<td style="font-weight: normal" th:text="${user.phone}"></td>
-									<td style="font-weight: normal" th:text="${user.chatRecordList}"></td>
+									<td style="font-weight: normal" th:if="${!user.chatRecordList.isEmpty()}" th:each="record:${user.chatRecordList}">
+                                        <a th:href="@{/user_records/}+${user.id}" th:text="${record.question}" th:title="查看所有记录"></a>
+									</td>
+                                    <td style="font-weight: normal" th:if="${user.chatRecordList.isEmpty()}" th:text="暂无聊天记录">
+                                    </td>
 									<td>
 										<!--<a class="btn btn-sm btn-outline-primary" th:href="@{/user_alter/}+${user.id}">修改</a>-->
 										<!--<button th:attr="delete_uri=@{/user_delete/}+${user.id}" type="submit"-->

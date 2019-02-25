@@ -6,24 +6,20 @@
 </head>
 <body>
     <!--topbar-->
-    <nav class="row navbar navbar-transparent justify-content-end" th:fragment="topbar">
+    <nav class="navbar navbar-transparent justify-content-end" th:fragment="topbar">
 
         <!--search-->
         <!--<input class="form-control form-control-dark w-100" type="text" id="search" placeholder="Search" aria-label="Search">-->
         <div class="input-group no-border col-md-4">
             <input id="search" type="text" value="" class="form-control" placeholder="Search...">
-            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <button id="search-icon" type="submit" class="btn btn-white btn-round btn-just-icon">
                 <i class="material-icons">search</i>
                 <div class="ripple-container"></div>
             </button>
         </div>
 
         <!--sign out-->
-        <ul class="navbar-nav px-3 col-md-1">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="/signout">Sign out</a>
-            </li>
-        </ul>
+        <a style="font-weight: normal;margin-left: -10px" class="nav-link" href="/signout">Sign out</a>
     </nav>
 
     <!--sidebar-->
@@ -34,14 +30,14 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav flex-column">
-                <li th:class="${activeUri=='traffic'?'nav-item active':'nav-item'}">
-                    <a th:href="@{/traffic}"class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">
+                <li th:class="${activeUri=='summary'?'nav-item active':'nav-item'}">
+                    <a th:href="@{/summary}"class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
                             <line x1="18" y1="20" x2="18" y2="10"></line>
                             <line x1="12" y1="20" x2="12" y2="4"></line>
                             <line x1="6" y1="20" x2="6" y2="14"></line>
                         </svg>
-                        <span style="font: 17px bold;">流量统计</span>
+                        <span style="font: 17px bold;">数据统计</span>
                     </a>
                 </li>
                 <li th:class="${activeUri=='users'?'nav-item active':'nav-item'}" >
@@ -101,7 +97,7 @@
                 <li th:class="${activeUri=='products'?'nav-item active':'nav-item'}">
                     <a class="d-flex align-items-center text-muted" th:href="@{/products}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                        <span style="font: 17px bold;">&nbsp;&nbsp;保险种类</span>
+                        <span style="font: 17px bold;">&nbsp;&nbsp;套餐信息</span>
                     </a>
                 </li>
                 <li class="nav-item">
