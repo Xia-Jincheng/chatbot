@@ -36,7 +36,7 @@ function search() {
                 list_group.appendChild(item);
             }
 
-            $(list_group).css({"width": "500px", "z-index": "100", "position": "absolute", "right": "110px", "top": "55px"});
+            $(list_group).css({"width": "500px", "z-index": "100", "position": "absolute", "right": "120px", "top": "55px"});
             console.log("halo");
             var body1 = document.getElementsByTagName("body");
             body1[0].appendChild(list_group);

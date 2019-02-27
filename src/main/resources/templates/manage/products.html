@@ -4,6 +4,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="img/icon.jpg">
 
     <title>product</title>
     <!-- Bootstrap core CSS -->
@@ -12,6 +13,11 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <!-- CSS Files -->
     <link href="css/material-dashboard.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script src="js/products.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
@@ -35,15 +41,13 @@
                 opacity: 1
             }
         }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        .xiangshang a{
+            font-weight: bolder;
         }
     </style>
 </head>
 
-<body data-spy="scroll" data-target=".navbar">
+<body data-spy="scroll" data-target=".navbar" style="background-color: white">
     <div th:replace="commons/bar::topbar"></div>
 
     <div class="container-fluid">
@@ -51,7 +55,95 @@
             <div th:replace="~{commons/bar::#sidebar(activeUri='products')}"></div>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-
+                <div class="section-lou2 floors">
+                    <div class="xiangshang" style="margin-top: 18px">
+                        <a href=""><span>套餐信息</span></a>
+                        <ul class="list">
+                            <li>
+                                <a href="">全部&nbsp;&nbsp;&nbsp;</a>
+                            </li>
+                            <li>
+                                <a href="">4G套餐&nbsp;&nbsp;&nbsp;</a>
+                            </li>
+                            <li>
+                                <a href="">流量业务&nbsp;&nbsp;&nbsp;</a>
+                            </li>
+                            <li>
+                                <a href="">宽带办理&nbsp;&nbsp;&nbsp;</a>
+                            </li>
+                            <li>
+                                <a href="">国际业务&nbsp;&nbsp;&nbsp;</a>
+                            </li>
+                            <li>
+                                <a href="">和通信包</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sect-lou1-img">
+                        <div class="sect-img-left">
+                            <div class="box1">
+                                <a href="">
+                                    <img src="img/s9.png" alt="">
+                                </a>
+                            </div>
+                            <div class="box2 box2-2">
+                                <a href="">
+                                    <h4>流量小时套餐</h4>
+                                    <p>有效期4小时</p>
+                                    <img src="img/s10.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sect-img-center">
+                            <div class="box3">
+                                <a href="">
+                                    <h4>流量可选包</h4>
+                                    <p>月费不变 流量升级</p>
+                                    <img src="img/s11.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="box3 box3_end">
+                                <a href="">
+                                    <h4>4G闲时流量包</h4>
+                                    <p>10元1GB闲时流量包</p>
+                                    <img src="img/s12.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sect-img-center">
+                            <div class="box3">
+                                <a href="">
+                                    <h4>自动升档包</h4>
+                                    <p>流量叠加 超划算</p>
+                                    <img src="img/s13.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="box3 box3_end">
+                                <a href="">
+                                    <h4>4G飞享套餐</h4>
+                                    <p>月费低至18元起</p>
+                                    <img src="img/s14.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sect-img-center sect-img-center2">
+                            <div class="box3">
+                                <a href="">
+                                    <h4>任我用（238元版）</h4>
+                                    <p>我的流量够任性</p>
+                                    <img src="img/s14.png" alt="">
+                                </a>
+                            </div>
+                            <div class="box3 box3_end">
+                                <a href="">
+                                    <h4>流量日套餐</h4>
+                                    <p>有效期24小时</p>
+                                    <img src="img/s16.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
             <form id="deleteUserFrom" method="post">
                 <input type="hidden" name="_method" value="delete"/>

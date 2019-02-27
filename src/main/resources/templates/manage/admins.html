@@ -39,9 +39,8 @@
             }
         }
 
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        li a{
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -84,7 +83,7 @@
                                     <i class="material-icons">edit</i>
                                 </button>
                             </a>
-                            <button th:attr="delete_uri=@{/user_delete/}+${user.id}" type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                            <button th:attr="delete_uri=@{/user_delete/}+${user.id}" type="submit" rel="tooltip" title="Remove" class="btn deleteBtn btn-danger btn-link btn-sm">
                                 <i class="material-icons">close</i>
                             </button>
                         </td>

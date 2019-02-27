@@ -52,8 +52,6 @@ public class UserController {
     @PutMapping("/user")
     public String userAlter(User user){
         userService.save(user);
-        System.out.println(user.getName());
-        System.out.println(user.getStatus());
         if(user.getStatus() == 0)
             return "redirect:/admins";
         if(user.getStatus() == 1)

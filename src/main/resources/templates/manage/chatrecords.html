@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <!-- CSS Files -->
-    <link href="css/material-dashboard.css" rel="stylesheet" />
+    <link href="/static/css/material-dashboard.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="asserts/css/dashboard.css" th:href="@{/static/css/dashboard.css}" rel="stylesheet">
@@ -35,9 +35,12 @@
             }
         }
 
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
+        li a{
+            border-radius: 50%;
+        }
+        td{
+            height: 20px;
+            font-weight: normal;
         }
     </style>
 </head>
@@ -58,7 +61,7 @@
                 <table class="table table-striped table-sm table-bordered">
                     <thead>
                     <tr>
-                        <th style="font-weight: bolder">用户名</th>
+                        <th style="font-weight: bolder">用户名(id)</th>
                         <th style="font-weight: bolder">Question</th>
                         <th style="font-weight: bolder">Answer</th>
                         <th style="font-weight: bolder">创建时间</th>
@@ -69,13 +72,13 @@
                     </thead>
                     <tbody>
                     <tr th:each="record:${records}">
-                        <td style="font-weight: normal" th:text="${record.user.name}"></td>
-                        <td style="font-weight: normal" th:text="${#strings.length(record.question)>13}?(${#strings.substring(record.question,0,13)}+'...'):${record.question}"></td>
-                        <td style="font-weight: normal" th:text="${#strings.length(record.answer)>13}?(${#strings.substring(record.answer,0,13)}+'...'):${record.answer}"></td>
-                        <td style="font-weight: normal" th:text="${record.addTime}"></td>
-                        <td style="font-weight: normal;font: 16px bold;color: blue;" th:if="${record.reply==true}" th:text="已处理"></td>
-                        <td style="font-weight: normal;font: 16px bold;color: red;" th:if="${record.reply==false}" th:text="未处理"></td>
-                        <td style="font-weight: normal;font: 16px bold;" th:text="${record.bot==true}?'机器':'人工'"></td>
+                        <td th:text="${record.user.name}+' ('+${record.user.id}+')'"></td>
+                        <td th:text="${#strings.length(record.question)>40}?(${#strings.substring(record.question,0,40)}+'...'):${record.question}"></td>
+                        <td th:text="${#strings.length(record.answer)>40}?(${#strings.substring(record.answer,0,40)}+'...'):${record.answer}"></td>
+                        <td th:text="${record.addTime}"></td>
+                        <td style="font: 16px bold;color: blue;" th:if="${record.reply==true}" th:text="已处理"></td>
+                        <td style="font: 16px bold;color: red;" th:if="${record.reply==false}" th:text="未处理"></td>
+                        <td style="font: 16px bold;" th:text="${record.bot==true}?'机器':'人工'"></td>
                         <td>
                             <!--<a th:href="@{/record_delete/}+${record.id}" class="btn btn-sm btn-outline-danger deleteBtn">删除</a>-->
                             <a th:href="@{/record_delete/}+${record.id}">

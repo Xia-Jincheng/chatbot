@@ -36,11 +36,14 @@
 					opacity: 1
 				}
 			}
-			
-			.chartjs-render-monitor {
-				-webkit-animation: chartjs-render-animation 0.001s;
-				animation: chartjs-render-animation 0.001s;
-			}
+
+            li a{
+                border-radius: 50%;
+            }
+            td{
+                height: 20px;
+                font-weight: bolder;
+            }
 		</style>
 	</head>
 
@@ -70,14 +73,14 @@
 							</thead>
 							<tbody>
 								<tr th:each="user:${users}">
-									<td style="font-weight: normal" th:text="${user.id}"></td>
-									<td style="font-weight: normal" th:text="${user.name}"></td>
-									<td style="font-weight: normal" th:text="${user.email}"></td>
-									<td style="font-weight: normal" th:text="${user.phone}"></td>
-									<td style="font-weight: normal" th:if="${!user.chatRecordList.isEmpty()}" th:each="record:${user.chatRecordList}">
-                                        <a th:href="@{/user_records/}+${user.id}" th:text="${record.question}" th:title="查看所有记录"></a>
+									<td th:text="${user.id}"></td>
+									<td th:text="${user.name}"></td>
+									<td th:text="${user.email}"></td>
+									<td th:text="${user.phone}"></td>
+									<td th:if="${!user.chatRecordList.isEmpty()}">
+                                        <a th:href="@{/user_records/}+${user.id}" th:text="${user.chatRecordList[0].question}" th:title="查看所有记录"></a>
 									</td>
-                                    <td style="font-weight: normal" th:if="${user.chatRecordList.isEmpty()}" th:text="暂无聊天记录">
+                                    <td th:if="${user.chatRecordList.isEmpty()}" th:text="暂无聊天记录">
                                     </td>
 									<td>
 										<!--<a class="btn btn-sm btn-outline-primary" th:href="@{/user_alter/}+${user.id}">修改</a>-->
@@ -88,7 +91,7 @@
                                                 <i class="material-icons">edit</i>
                                             </button>
                                         </a>
-                                        <button th:attr="delete_uri=@{/user_delete/}+${user.id}" type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                        <button th:attr="delete_uri=@{/user_delete/}+${user.id}" type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm deleteBtn">
                                             <i class="material-icons">close</i>
                                         </button>
 									</td>

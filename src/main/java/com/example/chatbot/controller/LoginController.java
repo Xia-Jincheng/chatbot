@@ -23,12 +23,12 @@ public class LoginController {
         return "manage/main";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/")
     public String tologin(){
         return "login";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password,
                         Map<String, Object> map, HttpSession session){
         User user = userService.findUserByName(username);
@@ -41,7 +41,7 @@ public class LoginController {
             return "login";
         }
         session.setAttribute("loginUser", username);
-        return "redirect:/main";
+        return "redirect:/summary";
     }
 
     @GetMapping("/signout")

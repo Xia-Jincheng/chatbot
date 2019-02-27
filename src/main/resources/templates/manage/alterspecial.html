@@ -56,7 +56,7 @@
                 <h4 style="font-weight: bold" class="card-title">Edit</h4>
             </div>
             <br>
-            <form id="form1" method="post">
+            <form id="form1" action="/special" method="post">
                 <input type="hidden" name="_method" value="put" th:if="${special!=null}"/>
                 <input type="hidden" name="id" th:if="${special!=null}" th:value="${special.id}">
                 <div class="form-group">
@@ -79,11 +79,11 @@
                     <label style="font: 17px bold;">相关产品</label><br/>
                     <div class="row">
                         <pre>  </pre>
-                        <select id="select" class="col-md-3">
-                            <option value="1">失业保险</option>
-                            <option value="2">工商保险</option>
-                            <option value="3">养老保险</option>
-                            <option value="4">医疗保险</option>
+                        <select id="select" name="product" class="col-md-3">
+                            <option value="1">4G飞享套餐</option>
+                            <option value="2">28元A套餐</option>
+                            <option value="3">28元B套餐</option>
+                            <option value="4">28元C套餐</option>
                         </select>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
         // document.getElementById("addtime").innerHTML = c+"&nbsp"+b;
     }
     setInterval(mytime, 1000);
-
-    $("#form1").attr("action", '/special/' + $("#select").val());
+    //
+    // $("#form1").attr("action", '/special/' + $("#select").val());
 </script>
 
 </body>
