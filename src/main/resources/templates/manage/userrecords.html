@@ -6,11 +6,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>user_records</title>
     <!-- Bootstrap core CSS -->
-    <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" href="asserts/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.css}" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <!-- CSS Files -->
-    <link th:href="@{css/material-dashboard.css}" rel="stylesheet" />
+    <link th:href="@{/static/css/material-dashboard.css}" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link th:href="@{/static/css/dashboard.css}" rel="stylesheet">
@@ -63,8 +63,7 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <span th:href="@{/record_unhandle}" class="btn btn-sm btn-success"
-                  th:text="${user_name}+'的聊天记录'"></span>
+            <span class="btn btn-sm btn-outline-info" style="font-weight: bold;font-size: 15px" th:text="${user_name}+'的聊天记录'"></span>
             <div class="table-responsive" style="margin-top: 18px;">
                 <table class="table table-striped table-sm table-bordered">
                     <thead>
@@ -87,7 +86,9 @@
                         <td style="font-weight: normal;font: 16px bold;" th:text="${record.bot==true}?'机器':'人工'"></td>
                         <td>
                             <!--<a th:href="@{/record_delete/}+${record.id}" class="btn btn-sm btn-outline-danger deleteBtn">删除</a>-->
-                            <a th:href="@{/record_delete/}+${record.id}" class="btn btn-outline-danger btn-sm">删除</a>
+                            <button rel="tooltip" title="Remove" th:attr="delete_uri=@{/record_delete1/}+${record.id}" class="btn btn-danger btn-link btn-sm deleteBtn">
+                                <i class="material-icons">close</i>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -100,7 +101,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" th:src="@{/webjars/jquery/3.3.1-1/jquery.js}" src="js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.3.1-1/jquery.js}"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
@@ -109,6 +110,19 @@
 <script type="text/javascript" src="asserts/js/feather.min.js"></script>
 <script>
     feather.replace()
+</script>
+
+<script>
+    $(".deleteBtn").click(function(){
+        var delete_uri = $(this).attr("delete_uri");
+        $.ajax({
+            url: delete_uri,
+            success: function(){
+                window.location.reload();
+                alert("成功删除此条记录！");
+            }
+        });
+    });
 </script>
 
 </body>
