@@ -38,7 +38,17 @@ public class UserController {
     public String getUserRecords(@PathVariable("id") Integer user_id, Model model){
         List<ChatRecord> user_records = recordService.getUserRecords(user_id);
         model.addAttribute("user_records", user_records);
+        model.addAttribute("user_id", user_id);
         model.addAttribute("user_name", userService.getUser(user_id).get().getName());
+        return "manage/userrecords";
+    }
+
+    @GetMapping("/user_record_unhandled/{user_id}")
+    public String getUserRecordsUnhandled(@PathVariable("user_id") Integer user_id, Model model){
+        List<ChatRecord> user_records = recordService.getUserRecordsUnhandled(user_id);
+        model.addAttribute("user_records", user_records);
+        model.addAttribute("user_name", userService.getUser(user_id).get().getName());
+        model.addAttribute("user_id", user_id);
         return "manage/userrecords";
     }
 
@@ -63,5 +73,10 @@ public class UserController {
     public String deleteUser(@PathVariable("id") Integer id){
         userService.deleteUser(id);
         return "redirect:/users";
+    }
+
+    @GetMapping("/answer/{record_id}")
+    public void answer(@PathVariable("record_id") Integer record_id, String answer){
+        recordService.addAnswer(record_id, answer);
     }
 }

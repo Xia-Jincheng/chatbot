@@ -41,6 +41,8 @@ public class ChatRecordController {
     public String toUnhandle(Model model){
         List<ChatRecord> records = recordService.getUnhandle();
         model.addAttribute("records", records);
+        model.addAttribute("page_num",1);
+        model.addAttribute("max_page_num", (int)Math.ceil(records.size()/11.0));
         return "manage/chatrecords";
     }
 }

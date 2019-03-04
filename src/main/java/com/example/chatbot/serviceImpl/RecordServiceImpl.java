@@ -57,4 +57,14 @@ public class RecordServiceImpl implements RecordService {
     public List<ChatRecord> getUserRecords(Integer user_id){
         return recordRepository.getUserRecords(user_id);
     }
+
+    @Override
+    public List<ChatRecord> getUserRecordsUnhandled(Integer user_id) {
+        return recordRepository.getRecordsUnhandled(user_id);
+    }
+
+    @Override
+    public void addAnswer(Integer record_id, String answer) {
+        recordRepository.addAnswer(record_id, answer);
+    }
 }

@@ -17,4 +17,8 @@ public interface RecordService {
     Integer getRecordNum();
 
     List<ChatRecord> getUserRecords(Integer user_id);
+
+    List<ChatRecord> getUserRecordsUnhandled(Integer user_id);
+
+    void addAnswer(Integer record_id, String answer);
 }
