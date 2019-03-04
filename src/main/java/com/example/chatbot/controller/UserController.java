@@ -74,9 +74,4 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/users";
     }
-
-    @GetMapping("/answer/{record_id}")
-    public void answer(@PathVariable("record_id") Integer record_id, String answer){
-        recordService.addAnswer(record_id, answer);
-    }
 }

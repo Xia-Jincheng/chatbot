@@ -17,4 +17,10 @@ public class UserRecordController {
         recordService.deleteRecord(id);
         return "成功删除用户该条聊天记录！";
     }
+
+    @GetMapping("/answer/{record_id}")
+    public String answer(@PathVariable("record_id") Integer record_id, String answer){
+        recordService.addAnswer(record_id, answer);
+        return "回复成功";
+    }
 }

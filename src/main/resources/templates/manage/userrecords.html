@@ -82,7 +82,8 @@
                         <td th:text="${#strings.length(record.question)>40}?(${#strings.substring(record.question,0,40)}+'...'):${record.question}"></td>
                         <td th:if="${record.reply==true}" th:text="${#strings.length(record.answer)>40}?(${#strings.substring(record.answer,0,40)}+'...'):${record.answer}"></td>
                         <td th:if="${record.reply==false}">
-                            <input type="text" class="form-control answer" th:attr="record_id=${record.id}" placeholder="在这里输入回复..">
+                            <input onkeydown="keyup_submit(event,this)" type="text" class="form-control answer"
+                                   th:attr="record_id=${record.id}" placeholder="在这里输入回复..">
                         </td>
                         <td th:class="'handled'+${record.id}" style="font: 16px bold;color: blue;" th:if="${record.reply==true}" th:text="已处理"></td>
                         <td th:class="'handled'+${record.id}" style="font: 16px bold;color: red;" th:if="${record.reply==false}" th:text="未处理"></td>
@@ -126,19 +127,22 @@
             }
         });
     });
-    $(".answer").keyup(function (event) {
-        if(event.which==13){
+
+    function keyup_submit(e, th){
+        var evt = window.event || e;
+        if (evt.keyCode == 13){
             $.ajax({
-                url: "/answer/" + $(this).attr("record_id"),
-                data: {"answer": $(this).val()},
+                url: "/answer/" + $(th).attr("record_id"),
+                data: {"answer": $(th).val()},
                 success: function(){
-                    var se = ".handled" + $(this).attr("record_id");
+                    var se = ".handled" + $(th).attr("record_id");
                     $(se).text("已处理");
+                    $(se).css({"color": "blue"});
                     alert("回复完成");
                 }
             });
         }
-    });
+    }
 </script>
 
 </body>
